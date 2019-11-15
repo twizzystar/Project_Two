@@ -1,5 +1,5 @@
 <?php
-$questions1[] =
+$questionsOne[] =
     [
         "leftAdder" => 3,
         "rightAdder" => 4,

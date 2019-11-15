@@ -27,15 +27,17 @@ if (empty ($question)){
 // Show which question they are on
 // Show random question
 // Shuffle answer buttons
+shuffle($questions);
+$choices = ['correctAnswer', 'firstIncorrectAnswer', 'secondIncorrectAnswer'];
+shuffle($choices);
 echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
-    echo "<p class='quiz'>What is " . ...$questions1["leftAdder"] . " + " . $questions1["rightAdder"]... . "?</p>";
-    echo "<form action='quiz.php?p=" . ($question) . "' method='post'>";
+    echo "<p class='quiz'>What is " . $questions[$question]["leftAdder"] . " + " . $questions[$question]["rightAdder"] . "?</p>";
+    echo "<form action='quiz.php?p=" . ($question+1) . "' method='post'>";
     echo "<input type='hidden' name='id' value='0' />";
-    echo "<input type='submit' class='btn' name='answer' value='" . $questions1["correctAnswer"] . "'>";
-    echo "<input type='submit' class='btn' name='answer' value='" . $questions1["firstIncorrectAnswer"] . "'>";
-    echo "<input type='submit' class='btn' name='answer' value='" . $questions1["secondIncorrectAnswer"] . "'>";
-    echo "<input type='hidden' name='correct' value='" . $questions1['correctAnswer'] . "'>";
-    echo "</form>";
+    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[0]] . "'>";
+    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[1]] . "'>";
+    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[2]] . "'>";
+    echo "<input type='hidden' name='correct' value='" . $questions[$question]['correctAnswer'] . "'>";
 
 // Toast correct and incorrect answers
 // Keep track of answers
