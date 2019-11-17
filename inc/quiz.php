@@ -24,7 +24,12 @@ if (empty ($question)){
   $score = 0;
   $question = 1;
 }
-// Show which question they are on
+if(isset($_POST['selection'])){
+   $_SESSION['selection'][$question-1] = filter_input(Input_POST, 'selection', FILTER_SANITIZE_STRING);
+}
+if (isset($_POST['correct'])) {
+        $_SESSION['correct'] = filter_input(INPUT_POST, 'correct', FILTER_SANITIZE_NUMBER_INT);
+}// Show which question they are on
 // Show random question
 // Shuffle answer buttons
 shuffle($questions);
@@ -32,8 +37,9 @@ $choices = ['correctAnswer', 'firstIncorrectAnswer', 'secondIncorrectAnswer'];
 shuffle($choices);
 echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
     echo "<p class='quiz'>What is " . $questions[$question]["leftAdder"] . " + " . $questions[$question]["rightAdder"] . "?</p>";
-    echo "<form action='quiz.php?p=" . ($question+1) . "' method='post'>";
-    echo "<input type='hidden' name='id' value='0' />";
+    var_dump($questions[$question]["leftAdder"]); 
+    echo "<form action='index.php?p=" . ($question+1) . "' method='post'>";
+
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[0]] . "'>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[1]] . "'>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[2]] . "'>";
