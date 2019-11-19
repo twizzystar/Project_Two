@@ -24,6 +24,7 @@ if (empty ($question)){
   $score = 0;
   $question = 1;
 }
+
 if(isset($_POST['selection'])){
    $_SESSION['selection'][$question-1] = filter_input(Input_POST, 'selection', FILTER_SANITIZE_STRING);
 }
@@ -37,7 +38,7 @@ $choices = ['correctAnswer', 'firstIncorrectAnswer', 'secondIncorrectAnswer'];
 shuffle($choices);
 echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
     echo "<p class='quiz'>What is " . $questions[$question]["leftAdder"] . " + " . $questions[$question]["rightAdder"] . "?</p>";
-    var_dump($questions[$question]["leftAdder"]); 
+    var_dump($questions[$question]["leftAdder"]);
     echo "<form action='index.php?p=" . ($question+1) . "' method='post'>";
 
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[0]] . "'>";
