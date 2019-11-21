@@ -29,7 +29,7 @@ if(isset($_POST['selection'])){
 }
 //if (isset($_POST['correct'])) {
         //$_SESSION['correct'] = filter_input(INPUT_POST, 'correct', FILTER_SANITIZE_NUMBER_INT);
-}// Show which question they are on
+// Show which question they are on
 // Show random question
 // Shuffle answer buttons
 shuffle($questions);
@@ -45,10 +45,10 @@ echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[2]] . "'>";
     echo "<input type='hidden' name='correct' value='" . $questions[$question]['correctAnswer'] . "'>";
     echo "<p class='quiz'>What is " . $questions[$question]["leftAdder"] . " + " . $questions[$question]["rightAdder"] . "?</p>";
-   var_dump($questions[$question]["leftAdder"]);
-   var_dump($questions[$question]["leftAdder"]);
-   echo "<form action='index.php?p=" . ($question1) . "' method='post'>";
-   echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[0]] . "'>";
+  // var_dump($questions[$question]["leftAdder"]);
+  // var_dump($questions[$question]["leftAdder"]);
+   echo "<form action='index.php?p=" . ($question+1) . "' method='post'>";
+   //echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[0]] . "'>";
 
 // Toast correct and incorrect answers
 // Keep track of answers
