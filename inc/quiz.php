@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 /* * PHP Techdegree Project 2: Build a Quiz App in PHP
  *
  * These comments are to help you get started.
