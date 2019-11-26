@@ -1,5 +1,10 @@
 <?php
   session_start();
+//if(isset($_SESSION['answer']))
+//{
+//header('Location:functions.php);
+//exit;
+//}
 ?>
 <!DOCTYPE html>
 <html lang="en">
