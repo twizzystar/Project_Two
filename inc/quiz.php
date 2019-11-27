@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 /* * PHP Techdegree Project 2: Build a Quiz App in PHP
  *
  * These comments are to help you get started.
@@ -17,7 +17,7 @@
 
 // Include questions
 include "questions.php";
-include "functions.php";
+
 // Keep track of which questions have been asked
 $question = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_NUMBER_INT);
 if (empty ($question)){
@@ -26,21 +26,20 @@ if (empty ($question)){
   $question = 1;
 }
 if(isset($_POST['answer'])){
-   $_SESSION['answer'][$question-1] = filter_input(Input_POST, 'answer', FILTER_SANITIZE_STRING);
+   $_SESSION['answer']= filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_NUMBER_INT);
 }
-/*if (isset($_POST['answer'])) {
-   $_SESSION['answer'] = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_STRING);
+/*if(isset($_POST['answer'])){
+   $_SESSION['answer']= filter_input(Input_POST, 'answer', FILTER_SANITIZE_STRING);
 }*/
 if (isset($_POST['correct'])) {
-        $_Session['correct'] = filter_input(INPUT_POST, 'correct',
-FILTER_SANITIZE_NUMBER_INT);
+        $_SESSION['correct'] = filter_input(INPUT_POST, 'correct', FILTER_SANITIZE_NUMBER_INT);
 }
-//Show which question they are on
+// Show which question they are on
 // Show random question
 // Shuffle answer buttons
-shuffle($_SESSION['questions']);
+shuffle($questions);
 $choices = ['correctAnswer', 'firstIncorrectAnswer', 'secondIncorrectAnswer'];
-shuffle($choices);
+array_rand($choices,3);
 echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
     echo "<p class='quiz'>What is " . $questions[$question-1]["leftAdder"] . " + " . $questions[$question-1]["rightAdder"] . "?</p>";
     echo "<form action='index.php?p=" . ($question+1) . "' method='post'>";
@@ -48,20 +47,37 @@ echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question-1][$choices[0]] . "'>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question-1][$choices[1]] . "'>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question-1][$choices[2]] . "'>";
-    echo "<input type='hidden' name='correct' value='" . $correctAnswer . "'>";
-
+    echo "<input type='hidden' name='correct' value='" . $questions[$question-1][$choices[0]] . "'>";
+   //echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[0]] . "'>";
+//include "functions.php";
 // Toast correct and incorrect answers
-    toasts ();
+  //  toasts ();
+  function toasts () {
+
+    if ($_SESSION['answer'] == $_SESSION['correct'] AND isset($_POST['answer'])){
+   $toast = "Right, good job!";
+   echo "<p class='breadcrumbs'>" . $toast . "</p>";
+
+   ++$_SESSION['score'];
+
+  } elseif ($_SESSION['answer'] != $_SESSION['correct'] AND isset($_POST['answer'])){
+   $toastIncorrect = "try again!";
+   echo "<p class='breadcrumbs'>" . $toastIncorrect . "</p>";
+
+  }
+
+
+
+  }
+  toasts();
 // Keep track of answers
 // If all questions have been asked, give option to show score
 // else give option to move to next question
-if ($question_num == 11) {
-    echo '<h1> You got '. $_SESSION['numberCorrect'] . ' out of 10 correct!</h1>';
-    echo "<form action='index.php' method='GET'>";
-    echo "<input type='submit' class='btn' name='restart' value='Try Again?'>";
-    session_destroy();
-    echo '</form>';
-}
+//if($question == 11){
+  //header('location: inc/endsession.php
+//scoreandrestartpage.php')
+//exit;
+//$_Session['score'];
+//}
 
 // Show score
-// Show score & button to restart
