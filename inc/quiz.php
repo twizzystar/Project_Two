@@ -73,10 +73,11 @@ echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
 // Keep track of answers
 // If all questions have been asked, give option to show score
 // else give option to move to next question
-//if($question == 11){
-  //header('location: inc/endsession.php
-//scoreandrestartpage.php')
-//exit;
+if($question == 11){
+  header('location: inc/endsession.php
+');
+exit;
+}
 //$_Session['score'];
 //}
 
