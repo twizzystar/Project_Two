@@ -1,12 +1,8 @@
 <?php
 session_start();
-//<form action="quiz_result.php" method="post" id="quiz">;
-
-//……..Form Here……..
-
-//</form>
-//<input type="submit" value="Submit Quiz" />
-
-echo "<div id='results'>$totalCorrect / 10 correct</div>";
-
+echo"<p>You scored ".$_SESSION['score'] . " out of 10!</p>";
+session_destroy();
+echo "<form action='/index.php' method='post'>";
+echo "<input type='submit' class='btn' name='Retest' value='Play Again'>";
+echo "</form>";
 ?>

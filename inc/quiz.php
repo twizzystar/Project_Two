@@ -50,8 +50,8 @@ echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
     echo "<input type='hidden' name='correct' value='" . $questions[$question-1][$choices[0]] . "'>";
    //echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[0]] . "'>";
 //include "functions.php";
-// Toast correct and incorrect answers
-  //  toasts ();
+
+
   function toasts () {
 
     if ($_SESSION['answer'] == $_SESSION['correct'] AND isset($_POST['answer'])){
@@ -61,15 +61,20 @@ echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
    ++$_SESSION['score'];
 
   } elseif ($_SESSION['answer'] != $_SESSION['correct'] AND isset($_POST['answer'])){
-   $toastIncorrect = "try again!";
+   $toastIncorrect = "Try again!";
    echo "<p class='breadcrumbs'>" . $toastIncorrect . "</p>";
 
   }
-
+return$_SESSION['score'];
+// Toast correct and incorrect answers
+  //  toasts ();
 
 
   }
   toasts();
+
+
+
 // Keep track of answers
 // If all questions have been asked, give option to show score
 // else give option to move to next question
@@ -78,7 +83,3 @@ if($question == 11){
 ');
 exit;
 }
-//$_Session['score'];
-//}
-
-// Show score

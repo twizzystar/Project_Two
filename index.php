@@ -16,13 +16,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div id="page-wrap">
-      <form id="start-quiz" method="post" action="quiz.php">
-          <div class="overlay index">
-          <div class="quiz-overlay"></div>
-      <h1 class="index-headline">How well can you do?</h1>
-<p class="index-sell">This quiz will reveal your Math skills.</p>
-              <input type="submit" id="submit" class="take-quiz-btn index-btn" value="Take The Quiz" />
+  
           </div>
     <div class="container">
         <div id="quiz-box">
