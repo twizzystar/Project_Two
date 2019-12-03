@@ -39,7 +39,7 @@ if (isset($_POST['correct'])) {
 // Shuffle answer buttons
 shuffle($questions);
 $choices = ['correctAnswer', 'firstIncorrectAnswer', 'secondIncorrectAnswer'];
-array_rand($choices,3);
+shuffle($choices,3);
 echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
     echo "<p class='quiz'>What is " . $questions[$question-1]["leftAdder"] . " + " . $questions[$question-1]["rightAdder"] . "?</p>";
     echo "<form action='index.php?p=" . ($question+1) . "' method='post'>";
