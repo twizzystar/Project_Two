@@ -37,9 +37,9 @@ if (isset($_POST['correct'])) {
 // Show which question they are on
 // Show random question
 // Shuffle answer buttons
-shuffle($questions);
+$_SESSION['questions'] = $questions;
 $choices = ['correctAnswer', 'firstIncorrectAnswer', 'secondIncorrectAnswer'];
-shuffle($choices,3);
+shuffle($choices);
 echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
     echo "<p class='quiz'>What is " . $questions[$question-1]["leftAdder"] . " + " . $questions[$question-1]["rightAdder"] . "?</p>";
     echo "<form action='index.php?p=" . ($question+1) . "' method='post'>";
@@ -47,7 +47,7 @@ echo "<p class='breadcrumbs'>Question " . $question . " of 10</p>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question-1][$choices[0]] . "'>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question-1][$choices[1]] . "'>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question-1][$choices[2]] . "'>";
-    echo "<input type='hidden' name='correct' value='" . $questions[$question-1][$choices[0]] . "'>";
+    echo "<input type='hidden' name='correct' value='" . $questions[$question-1]['correctAnswer'] . "'>";
    //echo "<input type='submit' class='btn' name='answer' value='" . $questions[$question][$choices[0]] . "'>";
 //include "functions.php";
 
